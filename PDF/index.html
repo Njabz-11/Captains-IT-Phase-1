@@ -1,0 +1,2934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stellar Voyage Manager - PAT Documentation</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/a4-print.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Additional styles for the consolidated document */
+        .page-break {
+            page-break-after: always;
+        }
+        
+        .section-divider {
+            border-top: 1px solid #3A0CA3;
+            margin: 2cm 0;
+        }
+        
+        .task-heading {
+            color: #3A0CA3;
+            font-size: 18pt;
+            margin-top: 1cm;
+            margin-bottom: 0.5cm;
+            page-break-after: avoid;
+        }
+        
+        .content-table {
+            width: 100%;
+            margin-bottom: 1cm;
+        }
+        
+        .content-table th {
+            background-color: #3A0CA3;
+            color: white;
+            text-align: left;
+            padding: 0.3cm;
+        }
+        
+        .content-table td {
+            padding: 0.2cm 0.3cm;
+            border-bottom: 1px solid #ccc;
+        }
+		
+		.no-indent-pre {
+            margin-left: 0;  
+            padding-left: 0; 
+            text-align: left; 
+		}
+          
+        .no-indent-cell {
+            padding-left: 0; 
+		}
+}
+        
+        /* Print-specific optimizations */
+        @media print {
+		    .page-break {
+                page-break-after: auto !important;
+            }
+            .section-divider {
+                margin: 0.5cm 0 !important;
+                border-top: 1px solid #ccc;
+            }
+            .task-heading {
+                margin-top: 0.5cm;
+            }
+		
+		
+		
+            body {
+                font-size: 11pt;
+            }
+            
+            h1 {
+                font-size: 18pt;
+            }
+            
+            h2 {
+                font-size: 16pt;
+            }
+            
+            h3 {
+                font-size: 14pt;
+            }
+            
+            .task-heading {
+                font-size: 16pt;
+            }
+            
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+            
+            .a4-optimized-image {
+                max-height: 10cm;
+                width: auto;
+                margin: 0 auto;
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="app-logo.jpg" alt="Stellar Voyage Manager Logo">
+                <h1>Stellar Voyage Manager</h1>
+            </div>
+            <p class="tagline">Space Travel Management System - PAT Documentation</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2>Table of Contents</h2>
+            <ol>
+                <li><a href="#task1a">Task 1A: Scenario and Scope</a></li>
+                <li><a href="#task1b">Task 1B: User Requirements</a></li>
+                <li><a href="#task2">Task 2: Database Design</a></li>
+                <li><a href="#task3a">Task 3A: Class Implementation</a></li>
+                <li><a href="#task4a">Task 4A: Navigation Flow</a></li>
+                <li><a href="#task4b">Task 4B: GUI Design</a></li>
+                <li><a href="#task5">Task 5: Software Tool - Input, Processing, Output (IPO)</a></li>
+            </ol>
+        </section>
+
+        <section id="task1a">
+            <h2 class="task-heading">Task 1A: Scenario and Scope</h2>
+            <div class="task-content">
+                <h3>Scenario</h3>
+                <p>The Stellar Voyage Manager is a comprehensive space travel management system designed to streamline the booking, management, and maintenance of interplanetary and interstellar travel. In an era where space tourism and travel have become accessible to the public, there is a need for a robust system to manage the complexities of space travel logistics.</p>
+                
+                <p>The application serves three primary user roles:</p>
+                <ul>
+                    <li><strong>Travelers</strong> - Individuals booking space travel experiences</li>
+                    <li><strong>Administrators</strong> - Staff managing bookings, flights, and customer data</li>
+                    <li><strong>Maintenance Personnel</strong> - Technical staff responsible for spacecraft maintenance and readiness</li>
+                </ul>
+                
+                <h3>Problem Statement</h3>
+                <p>The space tourism industry faces several challenges in managing the complex logistics of space travel:</p>
+                <ul>
+                    <li>Coordinating spacecraft availability with travel demand</li>
+                    <li>Ensuring proper maintenance schedules for spacecraft safety</li>
+                    <li>Managing bookings and passenger information efficiently</li>
+                    <li>Providing role-specific access to system features</li>
+                    <li>Maintaining accurate records of destinations, spacecraft, and flight schedules</li>
+                </ul>
+                
+                <h3>Project Scope</h3>
+                <p>The Stellar Voyage Manager application addresses these challenges through a comprehensive system with the following scope:</p>
+                
+                <h4>In Scope:</h4>
+                <ul>
+                    <li>User authentication and role-based access control</li>
+                    <li>Flight booking and management</li>
+                    <li>Spacecraft fleet management and maintenance tracking</li>
+                    <li>Destination information management</li>
+                    <li>Administrative reporting and analytics</li>
+                    <li>User profile management</li>
+                </ul>
+                
+                <h4>Out of Scope:</h4>
+                <ul>
+                    <li>Payment processing integration</li>
+                    <li>Real-time spacecraft tracking</li>
+                    <li>Integration with external travel agencies</li>
+                    <li>Mobile application version</li>
+                    <li>Multi-language support</li>
+                </ul>
+                
+                <h3>Project Goals</h3>
+                <p>The primary goals of the Stellar Voyage Manager application are to:</p>
+                <ul>
+                    <li>Streamline the space travel booking process for travelers</li>
+                    <li>Provide administrators with tools to efficiently manage flights and bookings</li>
+                    <li>Enable maintenance personnel to track and schedule spacecraft maintenance</li>
+                    <li>Maintain accurate records of all space travel activities</li>
+                    <li>Ensure data security and integrity throughout the system</li>
+                </ul>
+                
+                <p>The application aims to enhance the space travel experience for all stakeholders while ensuring safety, efficiency, and customer satisfaction.</p>
+            </div>
+        </section>
+        
+        <div class="section-divider"></div>
+        
+        <section id="task1b">
+            <h2 class="task-heading">Task 1B: User Requirements</h2>
+            <div class="task-content">
+                <h3>Functional Requirements</h3>
+                <p>The Stellar Voyage Manager must fulfill the following functional requirements for each user role:</p>
+                
+                <h4>Traveler Requirements</h4>
+                <ul>
+                    <li>User authentication (login/logout)</li>
+                    <li>Browse available flights and destinations</li>
+                    <li>Book flights to various space destinations</li>
+                    <li>View booking history and current bookings</li>
+                    <li>Cancel or modify existing bookings</li>
+                    <li>View spacecraft information and specifications</li>
+                    <li>View destination details and attractions</li>
+                    <li>Update personal profile information</li>
+                </ul>
+                
+                <h4>Administrator Requirements</h4>
+                <ul>
+                    <li>User authentication with administrative privileges</li>
+                    <li>Manage user accounts (create, view, update, delete)</li>
+                    <li>Manage flights (create, view, update, cancel)</li>
+                    <li>Assign spacecraft to flights</li>
+                    <li>View and manage all bookings</li>
+                    <li>Generate reports on bookings, flights, and revenue</li>
+                    <li>Manage destination information</li>
+                    <li>View spacecraft status and maintenance history</li>
+                </ul>
+                
+                <h4>Maintenance Personnel Requirements</h4>
+                <ul>
+                    <li>User authentication with maintenance privileges</li>
+                    <li>View spacecraft status and specifications</li>
+                    <li>Log maintenance activities and updates</li>
+                    <li>Update spacecraft status (operational, maintenance, retired)</li>
+                    <li>View maintenance history and schedules</li>
+                    <li>Generate maintenance reports</li>
+                    <li>Receive notifications about scheduled maintenance</li>
+                </ul>
+                
+                
+                <h3>User Stories</h3>
+                <p>The following user stories illustrate key interactions with the system:</p>
+                
+                <div class="user-story">
+                    <h4>Traveler Story</h4>
+                    <p>"As a traveler, I want to be able to search for available flights to Mars, view the spacecraft details, and book a seat so that I can plan my space vacation. After booking, I want to see my booking confirmation and be able to view or cancel my booking from my account dashboard."</p>
+                </div>
+                
+                <div class="user-story">
+                    <h4>Administrator Story</h4>
+                    <p>"As an administrator, I want to be able to create new flight schedules, assign appropriate spacecraft based on destination and passenger capacity, and monitor booking status. I need to generate reports on flight occupancy and resolve booking issues when they arise."</p>
+                </div>
+                
+                <div class="user-story">
+                    <h4>Maintenance Personnel Story</h4>
+                    <p>"As a maintenance technician, I want to view the status of all spacecraft, log completed maintenance activities, and update spacecraft status when maintenance is completed. I need to see the maintenance history of each spacecraft and receive alerts when scheduled maintenance is due."</p>
+                </div>
+            </div>
+        </section>
+        
+        <div class="section-divider"></div>
+        
+        <section id="task2">
+            <h2 class="task-heading">Task 2: Database Design</h2>
+            <div class="task-content">
+                <p>The Stellar Voyage Manager uses a Microsoft Access database with multiple linked tables to store and manage all application data. The database implements referential integrity to maintain data consistency and relationships between entities.</p>
+                
+                <h3>Database Schema</h3>
+                <div class="database-schema">
+                    <img src="database schema images/Relationships.png" alt="Database Schema" class="a4-optimized-image" style="width: 100%; max-height: 500px; object-fit: contain;">
+                </div>
+                
+                <h3>Table Relationships</h3>
+                <p>The database consists of six main tables with the following relationships:</p>
+                <ul>
+                    <li><strong>Users</strong> - Stores user information including credentials and roles</li>
+                    <li><strong>Flights</strong> - Contains flight details including destination, spacecraft, and schedule</li>
+                    <li><strong>Bookings</strong> - Links users to flights, representing passenger bookings</li>
+                    <li><strong>Spaceships</strong> - Stores information about the fleet of spacecraft</li>
+                    <li><strong>Maintenance</strong> - Records maintenance activities for spacecraft</li>
+                    <li><strong>Payments</strong> - Tracks payment information for bookings</li>
+                </ul>
+                
+                <h3>Table Structures</h3>
+                
+                <div class="db-table-container">
+                    <h4>Users Table</h4>
+                    <img src="database schema images/Users table.png" alt="Users Table Structure" class="a4-optimized-image" style="width: 100%; max-height: 300px; object-fit: contain; margin-bottom: 15px;">
+                    <table class="db-table">
+                        <tr>
+                            <th>Field Name</th>
+                            <th>Data Type</th>
+                            <th>Description</th>
+                            <th>Constraints</th>
+                        </tr>
+                        <tr>
+                            <td>UserID</td>
+                            <td>AutoNumber</td>
+                            <td>Unique identifier for user</td>
+                            <td>Primary Key</td>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td>Text</td>
+                            <td>User's full name</td>
+                            <td>Not Null</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>Text</td>
+                            <td>User's email address</td>
+                            <td>Not Null, Unique</td>
+                        </tr>
+                        <tr>
+                            <td>Password</td>
+                            <td>Text</td>
+                            <td>User's password</td>
+                            <td>Not Null</td>
+                        </tr>
+                        <tr>
+                            <td>Role</td>
+                            <td>Text</td>
+                            <td>User's role (Traveler, Administrator, Maintenance)</td>
+                            <td>Not Null</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="db-table-container">
+                    <h4>Flights Table</h4>
+                    <img src="database schema images/Flights table.png" alt="Flights Table Structure" class="a4-optimized-image" style="width: 100%; max-height: 300px; object-fit: contain; margin-bottom: 15px;">
+                    <table class="db-table">
+                        <tr>
+                            <th>Field Name</th>
+                            <th>Data Type</th>
+                            <th>Description</th>
+                            <th>Constraints</th>
+                        </tr>
+                        <tr>
+                            <td>FlightID</td>
+                            <td>AutoNumber</td>
+                            <td>Unique identifier for flight</td>
+                            <td>Primary Key</td>
+                        </tr>
+                        <tr>
+                            <td>DestinationID</td>
+                            <td>Text</td>
+                            <td>Destination of the flight</td>
+                            <td>Foreign Key (Destinations.DestinationID)</td>
+                        </tr>
+                        <tr>
+                            <td>DepartureDate</td>
+                            <td>Date/Time</td>
+                            <td>Date and time of departure</td>
+                            <td>Not Null</td>
+                        </tr>
+                        <tr>
+                            <td>ArrivalDate</td>
+                            <td>Date/Time</td>
+                            <td>Estimated date and time of arrival</td>
+                            <td>Not Null</td>
+                        </tr>
+                        <tr>
+                            <td>SpaceshipID</td>
+                            <td>Text</td>
+                            <td>Spacecraft assigned to the flight</td>
+                            <td>Foreign Key (Spaceships.SpaceshipID)</td>
+                        </tr>
+                        <tr>
+                            <td>SeatsAvailable</td>
+                            <td>Integer</td>
+                            <td>Number of available seats</td>
+                            <td>Not Null</td>
+                        </tr>
+                        <tr>
+                            <td>Price</td>
+                            <td>Currency</td>
+                            <td>Price per seat</td>
+                            <td>Not Null</td>
+                        </tr>
+                        <tr>
+                            <td>Status</td>
+                            <td>Text</td>
+                            <td>Flight status (Scheduled, Completed, Canceled)</td>
+                            <td>Not Null</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="db-table-container">
+                    <h4>Bookings Table</h4>
+                    <img src="database schema images/Bookings table.png" alt="Bookings Table Structure" class="a4-optimized-image" style="width: 100%; max-height: 300px; object-fit: contain; margin-bottom: 15px;">
+                    <table class="db-table">
+                        <tr>
+                            <th>Field Name</th>
+                            <th>Data Type</th>
+                            <th>Description</th>
+                            <th>Constraints</th>
+                        </tr>
+                        <tr>
+                            <td>BookingID</td>
+                            <td>AutoNumber</td>
+                            <td>Unique identifier for booking</td>
+                            <td>Primary Key</td>
+                        </tr>
+                        <tr>
+                            <td>UserID</td>
+                            <td>AutoNumber</td>
+                            <td>User who made the booking</td>
+                            <td>Foreign Key (Users.UserID)</td>
+                        </tr>
+                        <tr>
+                            <td>FlightID</td>
+                            <td>AutoNumber</td>
+                            <td>Flight being booked</td>
+                            <td>Foreign Key (Flights.FlightID)</td>
+                        </tr>
+                        <tr>
+                            <td>BookingDate</td>
+                            <td>Date/Time</td>
+                            <td>Date and time booking was made</td>
+                            <td>Not Null</td>
+                        </tr>
+                        <tr>
+                            <td>Status</td>
+                            <td>Text</td>
+                            <td>Booking status (Confirmed, Canceled)</td>
+                            <td>Not Null</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="db-table-container">
+                    <h4>Spaceships Table</h4>
+                    <img src="database schema images/Spaceships table.png" alt="Spaceships Table Structure" class="a4-optimized-image" style="width: 100%; max-height: 300px; object-fit: contain; margin-bottom: 15px;">
+                    <table class="db-table">
+                        <tr>
+                            <th>Field Name</th>
+                            <th>Data Type</th>
+                            <th>Description</th>
+                            <th>Constraints</th>
+                        </tr>
+                        <tr>
+                            <td>SpaceshipID</td>
+                            <td>AutoNumber</td>
+                            <td>Unique identifier for spacecraft</td>
+                            <td>Primary Key</td>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td>Text</td>
+                            <td>Name of the spacecraft</td>
+                            <td>Not Null</td>
+                        </tr>
+                        <tr>
+                            <td>Type</td>
+                            <td>Text</td>
+                            <td>Type of spacecraft</td>
+                            <td>Not Null</td>
+                        </tr>
+                        <tr>
+                            <td>Capacity</td>
+                            <td>Integer</td>
+                            <td>Passenger capacity</td>
+                            <td>Not Null</td>
+                        </tr>
+                        <tr>
+                            <td>Range</td>
+                            <td>Text</td>
+                            <td>Maximum travel range</td>
+                            <td>Not Null</td>
+                        </tr>
+                        <tr>
+                            <td>Status</td>
+                            <td>Text</td>
+                            <td>Current status (Operational, Maintenance, Retired)</td>
+                            <td>Not Null</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="db-table-container">
+                    <h4>Destinations Table</h4>
+                    <img src="database schema images/Destinations table.png" alt="Destinations Table Structure" class="a4-optimized-image" style="width: 100%; max-height: 300px; object-fit: contain; margin-bottom: 15px;">
+                    <table class="db-table">
+                        <tr>
+                            <th>Field Name</th>
+                            <th>Data Type</th>
+                            <th>Description</th>
+                            <th>Constraints</th>
+                        </tr>
+                        <tr>
+                            <td>DestinationID</td>
+                            <td>AutoNumber</td>
+                            <td>Unique identifier for destination</td>
+                            <td>Primary Key</td>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td>Text</td>
+                            <td>Name of the destination</td>
+                            <td>Not Null</td>
+                        </tr>
+                        <tr>
+                            <td>Type</td>
+                            <td>Text</td>
+                            <td>Type of destination (Planet, Moon, Space Station, etc.)</td>
+                            <td>Not Null</td>
+                        </tr>
+                        <tr>
+                            <td>Distance</td>
+                            <td>Text</td>
+                            <td>Distance from Earth</td>
+                            <td>Not Null</td>
+                        </tr>
+                        <tr>
+                            <td>Description</td>
+                            <td>Memo</td>
+                            <td>Detailed description of the destination</td>
+                            <td>Not Null</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="db-table-container">
+                    <h4>Maintenance Table</h4>
+                    <img src="database schema images/Maintenance table.png" alt="Maintenance Table Structure" class="a4-optimized-image" style="width: 100%; max-height: 300px; object-fit: contain; margin-bottom: 15px;">
+                    <table class="db-table">
+                        <tr>
+                            <th>Field Name</th>
+                            <th>Data Type</th>
+                            <th>Description</th>
+                            <th>Constraints</th>
+                        </tr>
+                        <tr>
+                            <td>MaintenanceID</td>
+                            <td>AutoNumber</td>
+                            <td>Unique identifier for maintenance record</td>
+                            <td>Primary Key</td>
+                        </tr>
+                        <tr>
+                            <td>SpaceshipID</td>
+                            <td>AutoNumber</td>
+                            <td>Spacecraft being maintained</td>
+                            <td>Foreign Key (Spaceships.SpaceshipID)</td>
+                        </tr>
+                        <tr>
+                            <td>MaintenanceDate</td>
+                            <td>Date/Time</td>
+                            <td>Date and time of maintenance</td>
+                            <td>Not Null</td>
+                        </tr>
+                        <tr>
+                            <td>Description</td>
+                            <td>Memo</td>
+                            <td>Description of maintenance performed</td>
+                            <td>Not Null</td>
+                        </tr>
+                        <tr>
+                            <td>TechnicianID</td>
+                            <td>Text</td>
+                            <td>Technician who performed the maintenance</td>
+                            <td>Foreign Key (Users.UserID)</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="db-table-container">
+                    <h4>Payments Table</h4>
+                    <img src="database schema images/Payments table.png" alt="Payments Table Structure" class="a4-optimized-image" style="width: 100%; max-height: 300px; object-fit: contain; margin-bottom: 15px;">
+                    <table class="db-table">
+                        <tr>
+                            <th>Field Name</th>
+                            <th>Data Type</th>
+                            <th>Description</th>
+                            <th>Constraints</th>
+                        </tr>
+                        <tr>
+                            <td>PaymentID</td>
+                            <td>AutoNumber</td>
+                            <td>Unique identifier for payment</td>
+                            <td>Primary Key</td>
+                        </tr>
+                        <tr>
+                            <td>BookingID</td>
+                            <td>AutoNumber</td>
+                            <td>Booking associated with payment</td>
+                            <td>Foreign Key (Bookings.BookingID)</td>
+                        </tr>
+                        <tr>
+                            <td>Amount</td>
+                            <td>Currency</td>
+                            <td>Payment amount</td>
+                            <td>Not Null</td>
+                        </tr>
+                        <tr>
+                            <td>PaymentDate</td>
+                            <td>Date/Time</td>
+                            <td>Date and time of payment</td>
+                            <td>Not Null</td>
+                        </tr>
+                        <tr>
+                            <td>PaymentMethod</td>
+                            <td>Text</td>
+                            <td>Method of payment</td>
+                            <td>Not Null</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <h3>Normalization</h3>
+                <p>The database has been normalized to the Third Normal Form (3NF) to eliminate redundancy and ensure data integrity:</p>
+                <ul>
+                    <li><strong>First Normal Form (1NF)</strong>: All tables have a primary key, and all attributes contain atomic values.</li>
+                    <li><strong>Second Normal Form (2NF)</strong>: All non-key attributes are fully functionally dependent on the primary key.</li>
+                    <li><strong>Third Normal Form (3NF)</strong>: All attributes are directly dependent on the primary key and not on other non-key attributes.</li>
+                </ul>
+                
+                <h3>Referential Integrity</h3>
+                <p>Referential integrity is maintained through foreign key constraints that ensure:</p>
+                <ul>
+                    <li>A booking cannot exist without a valid user and flight</li>
+                    <li>A flight cannot exist without a valid destination and spacecraft</li>
+                    <li>A maintenance record cannot exist without a valid spacecraft and technician</li>
+                    <li>A payment cannot exist without a valid booking</li>
+                </ul>
+                
+                <p>These constraints prevent orphaned records and maintain the consistency of the database.</p>
+            </div>
+        </section>
+        
+        <div class="section-divider"></div>
+        
+        <section id="task3a">
+            <h2 class="task-heading">Task 3A: Class Implementation</h2>
+            <div class="task-content">
+                <p>The Stellar Voyage Manager is built using an object-oriented approach with several key classes that encapsulate specific functionality. The application follows a modular architecture with clear separation of concerns.</p>
+                
+                <h3>Key Classes</h3>
+                <p>The following classes form the core of the application:</p>
+                
+                <div class="class-implementation">
+                    <h4>TAuthManager</h4>
+                    <div class="class-details">
+                        <p>The Authentication Manager class implements the singleton pattern to ensure a single instance manages user authentication throughout the application.</p>
+                        <h5>Key Attributes:</h5>
+                        <ul>
+                            <li><code>FInstance: TAuthManager</code> - Static instance of the class</li>
+                            <li><code>FCurrentUser: TUser</code> - Currently logged-in user</li>
+                            <li><code>FIsLoggedIn: Boolean</code> - Flag indicating login status</li>
+                        </ul>
+                        <h5>Key Methods:</h5>
+                        <ul>
+                            <li><code>GetInstance: TAuthManager</code> - Returns the singleton instance</li>
+                            <li><code>Login(Email, Password: string): Boolean</code> - Authenticates a user</li>
+                            <li><code>Logout</code> - Logs out the current user</li>
+                            <li><code>GetCurrentUser: TUser</code> - Returns the current user</li>
+                            <li><code>IsLoggedIn: Boolean</code> - Checks if a user is logged in</li>
+                        </ul>
+                        <h5>Implementation Highlights:</h5>
+                        <pre><code>function TAuthManager.Login(Email, Password: string): Boolean;
+var
+  DataModule: TStellarDataModule;
+  Users: TUserArray;
+  I: Integer;
+begin
+  Result := False;
+  DataModule := TStellarDataModule.Create(nil);
+  try
+    Users := DataModule.GetUsers;
+    for I := 0 to Length(Users) - 1 do
+    begin
+      if (Users[I].Email = Email) and (Users[I].Password = Password) then
+      begin
+        FCurrentUser := Users[I];
+        FIsLoggedIn := True;
+        Result := True;
+        Break;
+      end;
+    end;
+  finally
+    DataModule.Free;
+  end;
+end;</code></pre>
+    
+</code></pre>
+                </div>
+                
+                <div class="class-implementation">
+                    <h4>TStellarDataModule</h4>
+                    <div class="class-details">
+                        <p>The Data Module class manages database connections and provides methods for accessing and manipulating data.</p>
+                        <h5>Key Attributes:</h5>
+                        <ul>
+                            <li><code>FUsers: TUserArray</code> - Array of users</li>
+                            <li><code>FFlights: TFlightArray</code> - Array of flights</li>
+                            <li><code>FBookings: TBookingArray</code> - Array of bookings</li>
+                            <li><code>FSpaceships: TSpaceshipArray</code> - Array of spaceships</li>
+                            <li><code>FDestinations: TDestinationArray</code> - Array of destinations</li>
+                            <li><code>FMaintenance: TMaintenanceArray</code> - Array of maintenance records</li>
+                        </ul>
+                        <h5>Key Methods:</h5>
+                        <ul>
+                            <li><code>LoadData</code> - Loads all data from the database</li>
+                            <li><code>GetUsers: TUserArray</code> - Returns all users</li>
+                            <li><code>GetFlights: TFlightArray</code> - Returns all flights</li>
+                            <li><code>GetBookings: TBookingArray</code> - Returns all bookings</li>
+                            <li><code>GetUserBookings(UserID: string): TBookingArray</code> - Returns bookings for a specific user</li>
+                            <li><code>AddBooking(Booking: TBooking): Boolean</code> - Adds a new booking</li>
+                            <li><code>UpdateFlightSeats(FlightID: string; SeatsChange: Integer): Boolean</code> - Updates available seats for a flight</li>
+                        </ul>
+                        <h5>Implementation Highlights:</h5>
+                        <pre><code>function TStellarDataModule.GetUserBookings(UserID: string): TBookingArray;
+var
+  I, Count, Index: Integer;
+begin
+  Count := 0;
+  for I := 0 to Length(FBookings) - 1 do
+  begin
+    if FBookings[I].UserID = UserID then
+    begin
+      Inc(Count);
+    end;
+  end;
+  SetLength(Result, Count);
+  Index := 0;
+  for I := 0 to Length(FBookings) - 1 do
+  begin
+    if FBookings[I].UserID = UserID then
+    begin
+      Result[Index] := FBookings[I];
+      Inc(Index);
+    end;
+  end;
+end;</code></pre>
+ 
+</code></pre>
+                </div>
+                
+                <div class="class-implementation">
+                    <h4>Data Type Units</h4>
+                    <p>The application uses several units to define data types and structures:</p>
+                    <pre><code>// UserTypes.pas
+unit UserTypes;
+
+interface
+
+type
+  TUserRole = (urNone, urTraveler, urAdministrator, urMaintenance);
+  
+  TUser = record
+    UserID: string;
+    Name: string;
+    Email: string;
+    Password: string;
+    Role: TUserRole;
+  end;
+  
+  TUserArray = array of TUser;
+
+implementation
+
+end.
+
+// FlightTypes.pas
+unit FlightTypes;
+
+interface
+
+uses
+  System.SysUtils;
+
+type
+  TFlightStatus = (fsScheduled, fsCompleted, fsCanceled);
+  
+  TFlight = record
+    FlightID: string;
+    DestinationID: string;
+    DepartureDate: TDateTime;
+    ArrivalDate: TDateTime;
+    SpaceshipID: string;
+    SeatsAvailable: Integer;
+    Price: Currency;
+    Status: TFlightStatus;
+  end;
+  
+  TFlightArray = array of TFlight;
+
+implementation
+
+end.
+
+// BookingTypes.pas
+unit BookingTypes;
+
+interface
+
+uses
+  System.SysUtils;
+
+type
+  TBookingStatus = (bsConfirmed, bsCanceled);
+  
+  TBooking = record
+    BookingID: string;
+    UserID: string;
+    FlightID: string;
+    BookingDate: TDateTime;
+    Status: TBookingStatus;
+  end;
+  
+  TBookingArray = array of TBooking;
+
+implementation
+
+end.</code></pre>
+                </div>
+                
+                <h3>Record Types</h3>
+                <p>The application defines several record types to represent entities:</p>
+                
+                <div class="data-structure-implementation">
+                    <h4>TUser Record</h4>
+                    <pre><code>TUserRole = (urTraveler, urAdministrator, urMaintenance);
+
+TUser = record
+  UserID: string;
+  Name: string;
+  Email: string;
+  Password: string;
+  Role: TUserRole;
+end;
+
+TUserArray = array of TUser;</code></pre>
+                </div>
+                
+                <div class="data-structure-implementation">
+                    <h4>TFlight Record</h4>
+                    <pre><code>TFlightStatus = (fsScheduled, fsCompleted, fsCanceled);
+
+TFlight = record
+  FlightID: string;
+  Destination: string;
+  DepartureTime: TDateTime;
+  Spacecraft: string;
+  SeatsAvailable: Integer;
+  Status: TFlightStatus;
+end;
+
+TFlightArray = array of TFlight;</code></pre>
+                </div>
+                
+                <div class="data-structure-implementation">
+                    <h4>TBooking Record</h4>
+                    <pre><code>TBookingStatus = (bsConfirmed, bsCanceled, bsPending);
+
+TBooking = record
+  BookingID: string;
+  UserID: string;
+  FlightID: string;
+  BookingDate: TDateTime;
+  Status: TBookingStatus;
+end;
+
+TBookingArray = array of TBooking;</code></pre>
+                </div>
+                
+                <div class="data-structure-implementation">
+                    <h4>TSpaceship Record</h4>
+                    <pre><code>TSpaceshipStatus = (ssOperational, ssMaintenance, ssRetired);
+
+TSpaceship = record
+  SpaceshipID: string;
+  Name: string;
+  Capacity: Integer;
+  Status: TSpaceshipStatus;
+  LastMaintenance: TDateTime;
+end;
+
+TSpaceshipArray = array of TSpaceship;</code></pre>
+                </div>
+                
+                <div class="data-structure-implementation">
+                    <h4>TMaintenance Record</h4>
+                    <pre><code>TMaintenanceType = (mtRoutine, mtEmergency, mtUpgrade);
+
+TMaintenance = record
+  MaintenanceID: string;
+  SpaceshipID: string;
+  MaintenanceDate: TDateTime;
+  Description: string;
+  Type_: TMaintenanceType;
+  CompletedBy: string;
+end;
+
+TMaintenanceArray = array of TMaintenance;</code></pre>
+                </div>
+                
+                <h3>Dynamic Arrays</h3>
+                <p>The application uses dynamic arrays to store collections of records. These arrays are used for in-memory data manipulation and are populated from the database:</p>
+                
+                <pre><code>procedure TStellarDataModule.LoadUsers;
+var
+  Query: TADOQuery;
+  I: Integer;
+begin
+  Query := TADOQuery.Create(nil);
+  try
+    Query.Connection := ADOConnection;
+    Query.SQL.Text := 'SELECT * FROM Users';
+    Query.Open;
+    
+    SetLength(FUsers, Query.RecordCount);
+    I := 0;
+    
+    while not Query.Eof do
+    begin
+      FUsers[I].UserID := Query.FieldByName('UserID').AsString;
+      FUsers[I].Name := Query.FieldByName('Name').AsString;
+      FUsers[I].Email := Query.FieldByName('Email').AsString;
+      FUsers[I].Password := Query.FieldByName('Password').AsString;
+      FUsers[I].Role := TUserRole(Query.FieldByName('Role').AsInteger);
+      
+      Inc(I);
+      Query.Next;
+    end;
+  finally
+    Query.Free;
+  end;
+end;</code></pre>
+                
+                <h3>Enumerated Types</h3>
+                <p>The application uses enumerated types to represent status values and categories:</p>
+                
+                <pre><code>TUserRole = (urTraveler, urAdministrator, urMaintenance);
+TFlightStatus = (fsScheduled, fsCompleted, fsCanceled);
+TBookingStatus = (bsConfirmed, bsCanceled, bsPending);
+TSpaceshipStatus = (ssOperational, ssMaintenance, ssRetired);
+TMaintenanceType = (mtRoutine, mtEmergency, mtUpgrade);</code></pre>
+                
+                <p>These data structures provide a type-safe way to work with application data. The use of record types and arrays allows for efficient in-memory data manipulation, while the enumerated types provide clear semantics for status values.</p>
+                
+                <h3>Implementation Details</h3>
+                
+                <div class="implementation-details">
+                    <h4>Authentication Implementation</h4>
+                    <p>The authentication system uses the singleton pattern to ensure a single instance of the TAuthManager class exists throughout the application. This approach provides centralized management of user authentication and session state.</p>
+                    <p>Key features of the authentication implementation include:</p>
+                    <ul>
+                        <li>Secure login with email and password verification</li>
+                        <li>Role-based access control</li>
+                        <li>Session management with login state tracking</li>
+                        <li>User profile access through the current user property</li>
+                    </ul>
+                </div>
+                
+                <div class="implementation-details">
+                    <h4>Text File Usage</h4>
+                    <p>The application uses text files to store detailed information about spacecraft and destinations. These files are loaded at runtime to provide rich descriptions for users.</p>
+                    <p>Example of spacecraft text file format:</p>
+                    <pre><code>SPACECRAFT: Stellar Voyager I
+ID: SV-001
+CLASS: Luxury Cruiser
+CAPACITY: 120 passengers
+
+TECHNICAL SPECIFICATIONS:
+- Length: 185 meters
+- Width: 65 meters
+- Height: 40 meters
+- Maximum Speed: 0.15c (15% of light speed)
+- Propulsion: Fusion Drive with Antimatter Boosters
+- Range: 5 light years without refueling
+
+ACCOMMODATION:
+- 60 First Class Cabins (2 passengers each)
+- Observation Deck with 360° Views
+- Dining Hall with Capacity for 80
+- Recreation Area with Zero-G Sports
+- Medical Bay with Advanced Treatment Facilities
+
+SAFETY FEATURES:
+- Triple Redundant Life Support Systems
+- Emergency Escape Pods (Capacity: 150)
+- Radiation Shielding (Rated for Solar Flares)
+- Automated Collision Avoidance System
+- Fire Suppression System
+
+MAINTENANCE HISTORY:
+2024-01-15: Full Engine Overhaul
+2024-03-22: Life Support System Upgrade
+2024-06-10: Navigation Computer Update
+2024-09-05: Hull Integrity Check</code></pre>
+                    <p>The application includes methods for loading and parsing these text files:</p>
+                    
+                    <pre><code>function TStellarDataModule.LoadDestinationDetails(DestinationID: string): string;
+var
+  FileName: string;
+  FileContents: TStringList;
+begin
+  Result := '';
+  FileName := ExtractFilePath(Application.ExeName) + 'Data\Destinations\' + DestinationID + '.txt';
+  
+  if FileExists(FileName) then
+  begin
+    FileContents := TStringList.Create;
+    try
+      FileContents.LoadFromFile(FileName);
+      Result := FileContents.Text;
+    finally
+      FileContents.Free;
+    end;
+  end;
+end;</code></pre>
+                    
+                    <p>These text files provide a way to store rich, detailed information that would be cumbersome to store in the database. They also allow for easy updates to descriptive content without modifying the database structure.</p>
+                </div>
+                
+                <div class="implementation-details">
+                    <h4>Data Access Implementation</h4>
+                    <p>The TStellarDataModule class serves as a data access layer, providing methods to interact with the database. It implements the following key features:</p>
+                    <ul>
+                        <li>Connection management with ADO components</li>
+                        <li>Data caching in memory for improved performance</li>
+                        <li>CRUD operations for all entity types</li>
+                        <li>Specialized queries for common operations</li>
+                        <li>Transaction management for data integrity</li>
+                    </ul>
+                    <p>The data module loads data from the database into in-memory arrays during initialization, providing fast access to frequently used data while maintaining the ability to persist changes back to the database.</p>
+                </div>
+                
+                <div class="implementation-details">
+                    <h4>Text File Usage</h4>
+                    <p>The application uses text files to store detailed information about spacecraft and destinations. These files are loaded at runtime to provide rich descriptions for users.</p>
+                    <p>Example of spacecraft text file format:</p>
+                    <pre><code>SPACECRAFT: Stellar Voyager I
+ID: SV-001
+CLASS: Luxury Cruiser
+CAPACITY: 120 passengers
+
+TECHNICAL SPECIFICATIONS:
+- Length: 185 meters
+- Width: 65 meters
+- Height: 40 meters
+- Maximum Speed: 0.15c (15% of light speed)
+- Propulsion: Fusion Drive with Antimatter Boosters
+- Range: 5 light years without refueling
+
+ACCOMMODATION:
+- 60 First Class Cabins (2 passengers each)
+- Observation Deck with 360° Views
+- Dining Hall with Capacity for 80
+- Recreation Area with Zero-G Sports
+- Medical Bay with Advanced Treatment Facilities
+
+SAFETY FEATURES:
+- Triple Redundant Life Support Systems
+- Emergency Escape Pods (Capacity: 150)
+- Radiation Shielding (Rated for Solar Flares)
+- Automated Collision Avoidance System
+- Fire Suppression System
+
+MAINTENANCE HISTORY:
+2024-01-15: Full Engine Overhaul
+2024-03-22: Life Support System Upgrade
+2024-06-10: Navigation Computer Update
+2024-09-05: Hull Integrity Check</code></pre>
+                    <p>Text file parsing is implemented using stream readers and string manipulation functions to extract and structure the data for display in the application.</p>
+                </div>
+	<main class="container">
+        <section>
+            <h2>UML Class Diagrams</h2>
+            <p>This section presents the UML (Unified Modeling Language) class diagrams for the Stellar Voyage Manager application. Each class is presented individually with its attributes and methods, as per the requirements of the PAT project.</p>
+        </section>
+
+        <section id="uml-overview">
+            <h2>UML Overview</h2>
+            <div class="task-content">
+                <p>The Stellar Voyage Manager application is built using an object-oriented approach with several key classes that encapsulate specific functionality. The UML diagrams below illustrate the structure of these classes, including their attributes and methods.</p>
+                
+                <p>Each class is presented individually without relationships, focusing on the internal structure of the class. This approach allows for a clear understanding of each class's responsibilities and capabilities.</p>
+            </div>
+        </section>
+
+        <section id="auth-manager">
+            <h2>TAuthManager Class</h2>
+            <div class="uml-diagram">
+                <table class="uml-table">
+                    <tr>
+                        <th colspan="2">UML</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="uml-title">Name: TAuthManager</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="uml-section">Attributes:</td>
+                    </tr>
+                    <tr>
+                        <td>- FInstance: TAuthManager</td>
+                        <td>Static instance of the class (Singleton pattern)</td>
+                    </tr>
+                    <tr>
+                        <td>- FCurrentUser: TUser</td>
+                        <td>Currently logged-in user</td>
+                    </tr>
+                    <tr>
+                        <td>- FIsLoggedIn: Boolean</td>
+                        <td>Flag indicating login status</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="uml-section">Methods:</td>
+                    </tr>
+                    <tr>
+                        <td>+ GetInstance: TAuthManager</td>
+                        <td>Returns the singleton instance</td>
+                    </tr>
+                    <tr>
+                        <td>+ Login(Email, Password: string): Boolean</td>
+                        <td>Authenticates a user</td>
+                    </tr>
+                    <tr>
+                        <td>+ Logout</td>
+                        <td>Logs out the current user</td>
+                    </tr>
+                    <tr>
+                        <td>+ GetCurrentUser: TUser</td>
+                        <td>Returns the current user</td>
+                    </tr>
+                    <tr>
+                        <td>+ IsLoggedIn: Boolean</td>
+                        <td>Checks if a user is logged in</td>
+                    </tr>
+                </table>
+            </div>
+            <p>The TAuthManager class implements the singleton pattern to ensure a single instance manages user authentication throughout the application. It provides methods for user login and logout, and maintains the current user state.</p>
+        </section>
+
+        <section id="data-module">
+            <h2>TStellarDataModule Class</h2>
+            <div class="uml-diagram">
+                <table class="uml-table">
+                    <tr>
+                        <th colspan="2">UML</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="uml-title">Name: TStellarDataModule</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="uml-section">Attributes:</td>
+                    </tr>
+                    <tr>
+                        <td>- ADOConnection: TADOConnection</td>
+                        <td>Database connection component</td>
+                    </tr>
+                    <tr>
+                        <td>- FUsers: TUserArray</td>
+                        <td>Array of users</td>
+                    </tr>
+                    <tr>
+                        <td>- FFlights: TFlightArray</td>
+                        <td>Array of flights</td>
+                    </tr>
+                    <tr>
+                        <td>- FBookings: TBookingArray</td>
+                        <td>Array of bookings</td>
+                    </tr>
+                    <tr>
+                        <td>- FSpaceships: TSpaceshipArray</td>
+                        <td>Array of spaceships</td>
+                    </tr>
+                    <tr>
+                        <td>- FDestinations: TDestinationArray</td>
+                        <td>Array of destinations</td>
+                    </tr>
+                    <tr>
+                        <td>- FMaintenance: TMaintenanceArray</td>
+                        <td>Array of maintenance records</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="uml-section">Methods:</td>
+                    </tr>
+                    <tr>
+                        <td>+ LoadData</td>
+                        <td>Loads all data from the database</td>
+                    </tr>
+                    <tr>
+                        <td>- LoadUsers</td>
+                        <td>Loads user data from the database</td>
+                    </tr>
+                    <tr>
+                        <td>- LoadFlights</td>
+                        <td>Loads flight data from the database</td>
+                    </tr>
+                    <tr>
+                        <td>- LoadBookings</td>
+                        <td>Loads booking data from the database</td>
+                    </tr>
+                    <tr>
+                        <td>- LoadSpaceships</td>
+                        <td>Loads spaceship data from the database</td>
+                    </tr>
+                    <tr>
+                        <td>- LoadDestinations</td>
+                        <td>Loads destination data from the database</td>
+                    </tr>
+                    <tr>
+                        <td>- LoadMaintenance</td>
+                        <td>Loads maintenance data from the database</td>
+                    </tr>
+                    <tr>
+                        <td>+ GetUsers: TUserArray</td>
+                        <td>Returns all users</td>
+                    </tr>
+                    <tr>
+                        <td>+ GetFlights: TFlightArray</td>
+                        <td>Returns all flights</td>
+                    </tr>
+                    <tr>
+                        <td>+ GetBookings: TBookingArray</td>
+                        <td>Returns all bookings</td>
+                    </tr>
+                    <tr>
+                        <td>+ GetUserBookings(UserID: string): TBookingArray</td>
+                        <td>Returns bookings for a specific user</td>
+                    </tr>
+                    <tr>
+                        <td>+ AddBooking(Booking: TBooking): Boolean</td>
+                        <td>Adds a new booking</td>
+                    </tr>
+                    <tr>
+                        <td>+ UpdateFlightSeats(FlightID: string; SeatsChange: Integer): Boolean</td>
+                        <td>Updates available seats for a flight</td>
+                    </tr>
+                    <tr>
+                        <td>+ CancelBooking(BookingID: string): Boolean</td>
+                        <td>Cancels a booking</td>
+                    </tr>
+                    <tr>
+                        <td>+ LoadDestinationDetails(DestinationID: string): string</td>
+                        <td>Loads detailed information about a destination from a text file</td>
+                    </tr>
+                    <tr>
+                        <td>+ LoadSpaceshipDetails(SpaceshipID: string): string</td>
+                        <td>Loads detailed information about a spaceship from a text file</td>
+                    </tr>
+                </table>
+            </div>
+            <p>The TStellarDataModule class manages database connections and provides methods for accessing and manipulating data. It loads data from the database into in-memory arrays for efficient access and provides methods for common data operations.</p>
+        </section>
+
+        <section id="main-form">
+            <h2>TMainForm Class</h2>
+            <div class="uml-diagram">
+                <table class="uml-table">
+                    <tr>
+                        <th colspan="2">UML</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="uml-title">Name: TMainForm</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="uml-section">Attributes:</td>
+                    </tr>
+                    <tr>
+                        <td>- FCurrentForm: TForm</td>
+                        <td>Currently displayed form</td>
+                    </tr>
+                    <tr>
+                        <td>- FAuthManager: TAuthManager</td>
+                        <td>Reference to the authentication manager</td>
+                    </tr>
+                    <tr>
+                        <td>- FNavButtons: array of TButton</td>
+                        <td>Array of navigation buttons</td>
+                    </tr>
+                    <tr>
+                        <td>- pnlNavigation: TPanel</td>
+                        <td>Navigation panel</td>
+                    </tr>
+                    <tr>
+                        <td>- pnlContent: TPanel</td>
+                        <td>Content panel</td>
+                    </tr>
+                    <tr>
+                        <td>- lblUserName: TLabel</td>
+                        <td>Label displaying user name</td>
+                    </tr>
+                    <tr>
+                        <td>- lblUserRole: TLabel</td>
+                        <td>Label displaying user role</td>
+                    </tr>
+                    <tr>
+                        <td>- btnLogout: TButton</td>
+                        <td>Logout button</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="uml-section">Methods:</td>
+                    </tr>
+                    <tr>
+                        <td>- FormCreate(Sender: TObject)</td>
+                        <td>Form creation event handler</td>
+                    </tr>
+                    <tr>
+                        <td>- CreateNavButtons</td>
+                        <td>Creates navigation buttons based on user role</td>
+                    </tr>
+                    <tr>
+                        <td>- ShowForm(FormClass: TFormClass)</td>
+                        <td>Displays a specific form</td>
+                    </tr>
+                    <tr>
+                        <td>- NavButtonClick(Sender: TObject)</td>
+                        <td>Handles navigation button clicks</td>
+                    </tr>
+                    <tr>
+                        <td>- LogoutButtonClick(Sender: TObject)</td>
+                        <td>Handles logout button clicks</td>
+                    </tr>
+                    <tr>
+                        <td>- UpdateUserInfo</td>
+                        <td>Updates displayed user information</td>
+                    </tr>
+                </table>
+            </div>
+            <p>The TMainForm class serves as a container for all other forms and manages navigation. It dynamically creates navigation buttons based on the user's role and provides a consistent interface for the application.</p>
+        </section>
+
+        <section id="dashboard-form">
+            <h2>TDashboardForm Class</h2>
+            <div class="uml-diagram">
+                <table class="uml-table">
+                    <tr>
+                        <th colspan="2">UML</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="uml-title">Name: TDashboardForm</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="uml-section">Attributes:</td>
+                    </tr>
+                    <tr>
+                        <td>- AuthManager: TAuthManager</td>
+                        <td>Reference to the authentication manager</td>
+                    </tr>
+                    <tr>
+                        <td>- DataModule: TStellarDataModule</td>
+                        <td>Reference to the data module</td>
+                    </tr>
+                    <tr>
+                        <td>- lblWelcome: TLabel</td>
+                        <td>Welcome message label</td>
+                    </tr>
+                    <tr>
+                        <td>- pnlStatistics: TPanel</td>
+                        <td>Statistics panel</td>
+                    </tr>
+                    <tr>
+                        <td>- gridData: TStringGrid</td>
+                        <td>Data grid</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="uml-section">Methods:</td>
+                    </tr>
+                    <tr>
+                        <td>- FormCreate(Sender: TObject)</td>
+                        <td>Form creation event handler</td>
+                    </tr>
+                    <tr>
+                        <td>- FormDestroy(Sender: TObject)</td>
+                        <td>Form destruction event handler</td>
+                    </tr>
+                    <tr>
+                        <td>- RenderDashboardByRole</td>
+                        <td>Renders the dashboard based on user role</td>
+                    </tr>
+                    <tr>
+                        <td>- RenderTravelerDashboard</td>
+                        <td>Renders the traveler-specific dashboard</td>
+                    </tr>
+                    <tr>
+                        <td>- RenderAdminDashboard</td>
+                        <td>Renders the administrator-specific dashboard</td>
+                    </tr>
+                    <tr>
+                        <td>- RenderMaintenanceDashboard</td>
+                        <td>Renders the maintenance-specific dashboard</td>
+                    </tr>
+                    <tr>
+                        <td>- CreateStatCard(Caption, Value, IconName: string): TPanel</td>
+                        <td>Creates a statistical card</td>
+                    </tr>
+                </table>
+            </div>
+            <p>The TDashboardForm class displays role-specific information and statistics. It renders different dashboard views based on the user's role, providing relevant information and functionality.</p>
+        </section>
+
+        <section id="flights-form">
+            <h2>TFlightsForm Class</h2>
+            <div class="uml-diagram">
+                <table class="uml-table">
+                    <tr>
+                        <th colspan="2">UML</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="uml-title">Name: TFlightsForm</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="uml-section">Attributes:</td>
+                    </tr>
+                    <tr>
+                        <td>- AuthManager: TAuthManager</td>
+                        <td>Reference to the authentication manager</td>
+                    </tr>
+                    <tr>
+                        <td>- DataModule: TStellarDataModule</td>
+                        <td>Reference to the data module</td>
+                    </tr>
+                    <tr>
+                        <td>- gridFlights: TStringGrid</td>
+                        <td>Flights data grid</td>
+                    </tr>
+                    <tr>
+                        <td>- pnlFlightDetails: TPanel</td>
+                        <td>Flight details panel</td>
+                    </tr>
+                    <tr>
+                        <td>- btnBook: TButton</td>
+                        <td>Booking button</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="uml-section">Methods:</td>
+                    </tr>
+                    <tr>
+                        <td>- FormCreate(Sender: TObject)</td>
+                        <td>Form creation event handler</td>
+                    </tr>
+                    <tr>
+                        <td>- FormDestroy(Sender: TObject)</td>
+                        <td>Form destruction event handler</td>
+                    </tr>
+                    <tr>
+                        <td>- LoadFlights</td>
+                        <td>Loads and displays available flights</td>
+                    </tr>
+                    <tr>
+                        <td>- gridFlightsSelectCell(Sender: TObject; ACol, ARow: Integer; var CanSelect: Boolean)</td>
+                        <td>Handles flight selection in the grid</td>
+                    </tr>
+                    <tr>
+                        <td>- ShowFlightDetails(FlightID: string)</td>
+                        <td>Displays details for a selected flight</td>
+                    </tr>
+                    <tr>
+                        <td>- btnBookClick(Sender: TObject)</td>
+                        <td>Handles booking button clicks</td>
+                    </tr>
+                </table>
+            </div>
+            <p>The TFlightsForm class displays available flights and allows travelers to book flights. It provides a grid view of flights and detailed information about selected flights.</p>
+        </section>
+
+        <section id="bookings-form">
+            <h2>TMyBookingsForm Class</h2>
+            <div class="uml-diagram">
+                <table class="uml-table">
+                    <tr>
+                        <th colspan="2">UML</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="uml-title">Name: TMyBookingsForm</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="uml-section">Attributes:</td>
+                    </tr>
+                    <tr>
+                        <td>- AuthManager: TAuthManager</td>
+                        <td>Reference to the authentication manager</td>
+                    </tr>
+                    <tr>
+                        <td>- DataModule: TStellarDataModule</td>
+                        <td>Reference to the data module</td>
+                    </tr>
+                    <tr>
+                        <td>- gridBookings: TStringGrid</td>
+                        <td>Bookings data grid</td>
+                    </tr>
+                    <tr>
+                        <td>- pnlBookingDetails: TPanel</td>
+                        <td>Booking details panel</td>
+                    </tr>
+                    <tr>
+                        <td>- btnCancel: TButton</td>
+                        <td>Cancel booking button</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="uml-section">Methods:</td>
+                    </tr>
+                    <tr>
+                        <td>- FormCreate(Sender: TObject)</td>
+                        <td>Form creation event handler</td>
+                    </tr>
+                    <tr>
+                        <td>- FormDestroy(Sender: TObject)</td>
+                        <td>Form destruction event handler</td>
+                    </tr>
+                    <tr>
+                        <td>- LoadBookings</td>
+                        <td>Loads and displays user bookings</td>
+                    </tr>
+                    <tr>
+                        <td>- gridBookingsSelectCell(Sender: TObject; ACol, ARow: Integer; var CanSelect: Boolean)</td>
+                        <td>Handles booking selection in the grid</td>
+                    </tr>
+                    <tr>
+                        <td>- ShowBookingDetails(BookingID: string)</td>
+                        <td>Displays details for a selected booking</td>
+                    </tr>
+                    <tr>
+                        <td>- btnCancelClick(Sender: TObject)</td>
+                        <td>Handles cancel button clicks</td>
+                    </tr>
+                </table>
+            </div>
+            <p>The TMyBookingsForm class displays a user's bookings and allows them to view details and cancel bookings. It provides a grid view of bookings and detailed information about selected bookings.</p>
+        </section>
+
+        <section id="maintenance-form">
+            <h2>TSpacecraftStatusForm Class</h2>
+            <div class="uml-diagram">
+                <table class="uml-table">
+                    <tr>
+                        <th colspan="2">UML</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="uml-title">Name: TSpacecraftStatusForm</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="uml-section">Attributes:</td>
+                    </tr>
+                    <tr>
+                        <td>- AuthManager: TAuthManager</td>
+                        <td>Reference to the authentication manager</td>
+                    </tr>
+                    <tr>
+                        <td>- DataModule: TStellarDataModule</td>
+                        <td>Reference to the data module</td>
+                    </tr>
+                    <tr>
+                        <td>- gridSpaceships: TStringGrid</td>
+                        <td>Spaceships data grid</td>
+                    </tr>
+                    <tr>
+                        <td>- pnlSpaceshipDetails: TPanel</td>
+                        <td>Spaceship details panel</td>
+                    </tr>
+                    <tr>
+                        <td>- btnUpdateStatus: TButton</td>
+                        <td>Update status button</td>
+                    </tr>
+                    <tr>
+                        <td>- btnLogMaintenance: TButton</td>
+                        <td>Log maintenance button</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="uml-section">Methods:</td>
+                    </tr>
+                    <tr>
+                        <td>- FormCreate(Sender: TObject)</td>
+                        <td>Form creation event handler</td>
+                    </tr>
+                    <tr>
+                        <td>- FormDestroy(Sender: TObject)</td>
+                        <td>Form destruction event handler</td>
+                    </tr>
+                    <tr>
+                        <td>- LoadSpaceships</td>
+                        <td>Loads and displays spaceships</td>
+                    </tr>
+                    <tr>
+                        <td>- gridSpaceshipsSelectCell(Sender: TObject; ACol, ARow: Integer; var CanSelect: Boolean)</td>
+                        <td>Handles spaceship selection in the grid</td>
+                    </tr>
+                    <tr>
+                        <td>- ShowSpaceshipDetails(SpaceshipID: string)</td>
+                        <td>Displays details for a selected spaceship</td>
+                    </tr>
+                    <tr>
+                        <td>- btnUpdateStatusClick(Sender: TObject)</td>
+                        <td>Handles update status button clicks</td>
+                    </tr>
+                    <tr>
+                        <td>- btnLogMaintenanceClick(Sender: TObject)</td>
+                        <td>Handles log maintenance button clicks</td>
+                    </tr>
+                </table>
+            </div>
+            <p>The TSpacecraftStatusForm class displays spacecraft status and allows maintenance personnel to update status and log maintenance activities. It provides a grid view of spacecraft and detailed information about selected spacecraft.</p>
+        </section>
+
+        <section id="login-form">
+            <h2>TLoginForm Class</h2>
+            <div class="uml-diagram">
+                <table class="uml-table">
+                    <tr>
+                        <th colspan="2">UML</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="uml-title">Name: TLoginForm</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="uml-section">Attributes:</td>
+                    </tr>
+                    <tr>
+                        <td>- edtEmail: TEdit</td>
+                        <td>Email input field</td>
+                    </tr>
+                    <tr>
+                        <td>- edtPassword: TEdit</td>
+                        <td>Password input field</td>
+                    </tr>
+                    <tr>
+                        <td>- btnLogin: TButton</td>
+                        <td>Login button</td>
+                    </tr>
+                    <tr>
+                        <td>- lblError: TLabel</td>
+                        <td>Error message label</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="uml-section">Methods:</td>
+                    </tr>
+                    <tr>
+                        <td>- FormCreate(Sender: TObject)</td>
+                        <td>Form creation event handler</td>
+                    </tr>
+                    <tr>
+                        <td>- btnLoginClick(Sender: TObject)</td>
+                        <td>Handles login button clicks</td>
+                    </tr>
+                    <tr>
+                        <td>- ValidateInput: Boolean</td>
+                        <td>Validates user input</td>
+                    </tr>
+                </table>
+            </div>
+            <p>The TLoginForm class provides the login interface for the application. It includes fields for email and password input, and validates user credentials against the database.</p>
+        </section>
+    </main>
+                
+                <h3>Class Relationships</h3>
+                <p>The classes in the Stellar Voyage Manager application interact in the following ways:</p>
+                <ul>
+                    <li>The TAuthManager class uses the TStellarDataModule to verify user credentials during login.</li>
+                    <li>Form classes access the TAuthManager singleton to check user authentication status and role.</li>
+                    <li>Form classes use the TStellarDataModule to retrieve and manipulate data.</li>
+                    <li>Data type units provide common structures used across multiple classes.</li>
+                </ul>
+                <p>This design promotes separation of concerns, with authentication, data access, and user interface components having clear responsibilities and dependencies.</p>
+            </div>
+        </section>
+        
+        <div class="section-divider"></div>
+        
+        <section id="task4a">
+            <h2 class="task-heading">Task 4A: Navigation Flow</h2>
+            <div class="task-content">
+                <p>The Stellar Voyage Manager implements a role-based navigation system that provides different interfaces and functionality based on the user's role. This approach ensures that users only have access to the functionality relevant to their responsibilities.</p>
+                
+                <h3>Navigation Structure</h3>
+                <p>The application's navigation structure is organized as follows:</p>
+                
+                <div class="navigation-flow">
+                    <img src="GUI design/Navigation flow 1.png" alt="Navigation Flow Diagram" class="a4-optimized-image" style="width: 100%; max-height: 500px; object-fit: contain; margin: 15px 0;">
+                </div>
+                
+                <h3>Role-Based Navigation</h3>
+                <p>The navigation options available to users depend on their assigned role:</p>
+                
+                <div class="role-navigation">
+                    <h4>Traveler Navigation</h4>
+                    <ul>
+                        <li><strong>Dashboard</strong> - Overview of upcoming trips and booking history</li>
+                        <li><strong>Book Flight</strong> - Search and book available flights</li>
+                        <li><strong>My Bookings</strong> - View and manage existing bookings</li>
+                        <li><strong>Destinations</strong> - Browse available destinations</li>
+                        <li><strong>Spacecraft</strong> - View information about the fleet</li>
+                        <li><strong>Profile</strong> - Update personal information</li>
+                        <li><strong>Logout</strong> - End the current session</li>
+                    </ul>
+                </div>
+                
+                <div class="role-navigation">
+                    <h4>Administrator Navigation</h4>
+                    <ul>
+                        <li><strong>Dashboard</strong> - Overview of system statistics and alerts</li>
+                        <li><strong>Users</strong> - Manage user accounts</li>
+                        <li><strong>Flights</strong> - Create and manage flight schedules</li>
+                        <li><strong>Bookings</strong> - View and manage all bookings</li>
+                        <li><strong>Spacecraft</strong> - Manage the spacecraft fleet</li>
+                        <li><strong>Destinations</strong> - Manage destination information</li>
+                        <li><strong>Reports</strong> - Generate system reports</li>
+                        <li><strong>Profile</strong> - Update personal information</li>
+                        <li><strong>Logout</strong> - End the current session</li>
+                    </ul>
+                </div>
+                
+                <div class="role-navigation">
+                    <h4>Maintenance Personnel Navigation</h4>
+                    <ul>
+                        <li><strong>Dashboard</strong> - Overview of maintenance tasks and alerts</li>
+                        <li><strong>Spacecraft Status</strong> - View and update spacecraft status</li>
+                        <li><strong>Maintenance Log</strong> - Record and view maintenance activities</li>
+                        <li><strong>Maintenance Schedule</strong> - View upcoming maintenance tasks</li>
+                        <li><strong>Reports</strong> - Generate maintenance reports</li>
+                        <li><strong>Profile</strong> - Update personal information</li>
+                        <li><strong>Logout</strong> - End the current session</li>
+                    </ul>
+                </div>
+                
+                <h3>Navigation Implementation</h3>
+                <p>The navigation system is implemented using dynamic button creation based on the user's role. When a user logs in, the application checks their role and creates the appropriate navigation buttons in the sidebar.</p>
+                
+                <pre><code>procedure TMainForm.CreateNavigationButtons;
+var
+  AuthManager: TAuthManager;
+  CurrentUser: TUser;
+  ButtonTop: Integer;
+  NavButton: TButton;
+begin
+  // Clear existing navigation buttons
+  ClearNavigationButtons;
+  
+  // Get current user and role
+  AuthManager := TAuthManager.GetInstance;
+  CurrentUser := AuthManager.GetCurrentUser;
+  
+  // Set initial position
+  ButtonTop := 10;
+  
+  // Create common buttons for all roles
+  NavButton := CreateNavButton('Dashboard', ButtonTop);
+  NavButton.OnClick := btnDashboardClick;
+  ButtonTop := ButtonTop + 40;
+  
+  // Create role-specific buttons
+  case CurrentUser.Role of
+    urTraveler:
+      begin
+        NavButton := CreateNavButton('Book Flight', ButtonTop);
+        NavButton.OnClick := btnBookFlightClick;
+        ButtonTop := ButtonTop + 40;
+        
+        NavButton := CreateNavButton('My Bookings', ButtonTop);
+        NavButton.OnClick := btnMyBookingsClick;
+        ButtonTop := ButtonTop + 40;
+        
+        NavButton := CreateNavButton('Destinations', ButtonTop);
+        NavButton.OnClick := btnDestinationsClick;
+        ButtonTop := ButtonTop + 40;
+        
+        NavButton := CreateNavButton('Spacecraft', ButtonTop);
+        NavButton.OnClick := btnSpacecraftClick;
+        ButtonTop := ButtonTop + 40;
+      end;
+      
+    urAdministrator:
+      begin
+        NavButton := CreateNavButton('Users', ButtonTop);
+        NavButton.OnClick := btnUsersClick;
+        ButtonTop := ButtonTop + 40;
+        
+        NavButton := CreateNavButton('Flights', ButtonTop);
+        NavButton.OnClick := btnFlightsClick;
+        ButtonTop := ButtonTop + 40;
+        
+        NavButton := CreateNavButton('Bookings', ButtonTop);
+        NavButton.OnClick := btnBookingsClick;
+        ButtonTop := ButtonTop + 40;
+        
+        NavButton := CreateNavButton('Spacecraft', ButtonTop);
+        NavButton.OnClick := btnSpacecraftClick;
+        ButtonTop := ButtonTop + 40;
+        
+        NavButton := CreateNavButton('Destinations', ButtonTop);
+        NavButton.OnClick := btnDestinationsClick;
+        ButtonTop := ButtonTop + 40;
+        
+        NavButton := CreateNavButton('Reports', ButtonTop);
+        NavButton.OnClick := btnReportsClick;
+        ButtonTop := ButtonTop + 40;
+      end;
+      
+    urMaintenance:
+      begin
+        NavButton := CreateNavButton('Spacecraft Status', ButtonTop);
+        NavButton.OnClick := btnSpacecraftStatusClick;
+        ButtonTop := ButtonTop + 40;
+        
+        NavButton := CreateNavButton('Maintenance Log', ButtonTop);
+        NavButton.OnClick := btnMaintenanceLogClick;
+        ButtonTop := ButtonTop + 40;
+        
+        NavButton := CreateNavButton('Maintenance Schedule', ButtonTop);
+        NavButton.OnClick := btnMaintenanceScheduleClick;
+        ButtonTop := ButtonTop + 40;
+        
+        NavButton := CreateNavButton('Reports', ButtonTop);
+        NavButton.OnClick := btnReportsClick;
+        ButtonTop := ButtonTop + 40;
+      end;
+  end;
+  
+  // Create common buttons for all roles
+  NavButton := CreateNavButton('Profile', ButtonTop);
+  NavButton.OnClick := btnProfileClick;
+  ButtonTop := ButtonTop + 40;
+  
+  NavButton := CreateNavButton('Logout', ButtonTop);
+  NavButton.OnClick := btnLogoutClick;
+end;</code></pre>
+                
+                <h3>Navigation Flow</h3>
+                <p>The navigation flow follows these general patterns:</p>
+                
+                <div class="flow-description">
+                    <h4>User Authentication Flow</h4>
+                    <ol>
+                        <li>User launches the application</li>
+                        <li>Login form is displayed</li>
+                        <li>User enters credentials</li>
+                        <li>System validates credentials</li>
+                        <li>If valid, user is directed to their role-specific dashboard</li>
+                        <li>If invalid, error message is displayed</li>
+                    </ol>
+                </div>
+                
+                <div class="flow-description">
+                    <h4>Traveler Booking Flow</h4>
+                    <ol>
+                        <li>Traveler navigates to "Book Flight"</li>
+                        <li>System displays available flights</li>
+                        <li>Traveler selects a flight</li>
+                        <li>System displays flight details and booking form</li>
+                        <li>Traveler confirms booking</li>
+                        <li>System creates booking record and updates seat availability</li>
+                        <li>Confirmation is displayed</li>
+                    </ol>
+                </div>
+                
+                <div class="flow-description">
+                    <h4>Administrator Flight Management Flow</h4>
+                    <ol>
+                        <li>Administrator navigates to "Flights"</li>
+                        <li>System displays flight management interface</li>
+                        <li>Administrator can create, view, update, or cancel flights</li>
+                        <li>When creating a flight, administrator selects destination, spacecraft, dates, and pricing</li>
+                        <li>System validates input and creates flight record</li>
+                        <li>Updated flight list is displayed</li>
+                    </ol>
+                </div>
+                
+                <div class="flow-description">
+                    <h4>Maintenance Status Update Flow</h4>
+                    <ol>
+                        <li>Maintenance personnel navigates to "Spacecraft Status"</li>
+                        <li>System displays list of spacecraft with current status</li>
+                        <li>Maintenance personnel selects a spacecraft</li>
+                        <li>System displays detailed spacecraft information</li>
+                        <li>Maintenance personnel updates status (e.g., from "Operational" to "Maintenance")</li>
+                        <li>System updates spacecraft record and checks for affected flights</li>
+                        <li>Confirmation is displayed</li>
+                    </ol>
+                </div>
+                
+                <p>These navigation flows ensure that users can efficiently access the functionality they need while maintaining the security and integrity of the system.</p>
+            </div>
+        </section>
+        
+        <div class="section-divider"></div>
+        
+        <section id="task4b">
+            <h2 class="task-heading">Task 4B: GUI Design</h2>
+            <div class="task-content">
+                <p>The Stellar Voyage Manager application features a cosmic-themed graphical user interface that combines aesthetic appeal with functional design. The GUI is designed to provide an intuitive and immersive experience for users while ensuring efficiency and usability.</p>
+                
+                <h3>Form Designs</h3>
+                <p>The application includes multiple forms, each designed for specific functionality:</p>
+                
+                <div class="form-designs">
+                    <div class="form-design">
+                        <h4>Main Form</h4>
+                        <img src="GUI design/Main Form.png" alt="Main Form Design" class="a4-optimized-image">
+                        <p>The main form serves as a container for all other forms and includes:</p>
+                        <ul>
+                            <li>Header with application title and logo</li>
+                            <li>Sidebar navigation with role-specific options</li>
+                            <li>User information panel with name and role</li>
+                            <li>Logout button for session termination</li>
+                            <li>Content area for displaying child forms</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="form-design">
+                        <h4>Login Form</h4>
+                        <img src="GUI design/Login screen.png" alt="Login Form Design" class="a4-optimized-image">
+                        <p>The login form provides user authentication:</p>
+                        <ul>
+                            <li>Email input field with validation</li>
+                            <li>Password input field with masking</li>
+                            <li>Login button for submission</li>
+                            <li>Error messages for invalid credentials</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="form-design">
+                        <h4>Dashboard Form</h4>
+                        <img src="GUI design/dashboard.png" alt="Dashboard Form Design" class="a4-optimized-image">
+                        <p>The dashboard provides an overview based on user role:</p>
+                        <ul>
+                            <li>Welcome message with user name</li>
+                            <li>Statistical cards showing key metrics</li>
+                            <li>Data grid showing relevant information (flights, bookings, maintenance)</li>
+                            <li>Role-specific content and functionality</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h3>Control Types</h3>
+                <p>The application uses a variety of controls to provide an intuitive user experience:</p>
+                
+                <div class="control-types">
+                    <table class="control-table">
+                        <tr>
+                            <th>Control Type</th>
+                            <th>Usage</th>
+                            <th>Example</th>
+                        </tr>
+                        <tr>
+                            <td>Buttons</td>
+                            <td>Action triggers (e.g., Save, Cancel, Login)</td>
+                            <td>Login button on the authentication screen</td>
+                        </tr>
+                        <tr>
+                            <td>Text Fields</td>
+                            <td>Text input (e.g., names, emails, descriptions)</td>
+                            <td>Email field on the login form</td>
+                        </tr>
+                        <tr>
+                            <td>Combo Boxes</td>
+                            <td>Selection from predefined options</td>
+                            <td>Destination selection in flight booking</td>
+                        </tr>
+                        <tr>
+                            <td>Date Pickers</td>
+                            <td>Date selection</td>
+                            <td>Departure date selection in flight booking</td>
+                        </tr>
+                        <tr>
+                            <td>Grids</td>
+                            <td>Tabular data display</td>
+                            <td>Flight list in booking screen</td>
+                        </tr>
+                        <tr>
+                            <td>Tabs</td>
+                            <td>Categorized content organization</td>
+                            <td>Report categories in administrator interface</td>
+                        </tr>
+                        <tr>
+                            <td>Radio Buttons</td>
+                            <td>Mutually exclusive options</td>
+                            <td>Spacecraft status selection (Operational, Maintenance, Retired)</td>
+                        </tr>
+                        <tr>
+                            <td>Check Boxes</td>
+                            <td>Multiple selection options</td>
+                            <td>Feature selection in spacecraft configuration</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <h3>Responsive Design</h3>
+                <p>The application is designed to adapt to different screen sizes and resolutions:</p>
+                <ul>
+                    <li>Flexible layouts that adjust to window size</li>
+                    <li>Scalable fonts and controls</li>
+                    <li>Collapsible navigation for smaller screens</li>
+                    <li>Responsive grids that adjust column visibility based on available space</li>
+                    <li>Minimum and maximum size constraints to ensure usability</li>
+                </ul>
+                
+                <h3>User Feedback</h3>
+                <p>The interface provides clear feedback to users through:</p>
+                <ul>
+                    <li>Status messages for operations (success, warning, error)</li>
+                    <li>Progress indicators for long-running processes</li>
+                    <li>Visual cues for interactive elements (hover effects, focus indicators)</li>
+                    <li>Confirmation dialogs for important actions</li>
+                    <li>Error messages with clear instructions for resolution</li>
+                </ul>
+                
+                <p>The GUI design ensures that users can efficiently navigate the application and perform their tasks with minimal cognitive load. The space-themed aesthetic enhances the user experience while maintaining functionality and usability.</p>
+            </div>
+        </section>
+        
+        <div class="section-divider"></div>
+        
+        <section id="task 5">
+			<h2>TASK 5: IPO TABLE</h2>
+            <div class="task-content">
+                
+                <h3>USER REGISTRATION</h3>
+                <div class="ipo-process">
+                    <table class="ipo-table" >
+                        <tr>
+                            <th>Input</th>
+                            <th>Processing</th>
+                            <th>Output</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ul>
+                                    <li><strong>Email:</strong> String, TEdit, must contain @ and be unique</li>
+                                    <li><strong>Password:</strong> String, TEdit, min 8 chars with number and symbol</li>
+                                    <li><strong>Full Name:</strong> String, TEdit, must contain at least two words</li>
+                                    <li><strong>User Role:</strong> String, TComboBox (Traveler/Administrator/Maintenance)</li>
+                                    <li><strong>Home Base:</strong> String, TComboBox (EARTH1, MOON1, MARS1)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ol>
+                                    <li>Generate unique UserID from initials, role, and base</li>
+                                    <li>Insert record into tblUsers</li>
+                                    <li>Create user profile text file</li>
+                                    <li>Navigate to appropriate dashboard</li>
+                                </ol>
+
+                                <pre class="no-indent-pre">
+	// Generate UserID
+	userID ← initials + '-' + roleCode + baseCode
+	// Insert user data
+	tblUsers.Append
+	FieldValues['UserID'] ← userID
+	FieldValues['Email'] ← edtEmail.Text
+	FieldValues['Password'] ← edtPassword.Text
+	FieldValues['FullName'] ← edtFullName.Text
+	FieldValues['UserRole'] ← cmbUserRole.Text
+	FieldValues['HomeBase'] ← cmbHomeBase.Text
+	tblUsers.Post
+                                </pre>
+
+                            </td>
+                            <td>
+                                <ul>
+                                    <li><strong>Database Record:</strong> New entry in tblUsers</li>
+                                    <li><strong>Profile File:</strong> Text file with user details</li>
+                                    <li><strong>Success Message:</strong> "Registration successful!"</li>
+                                    <li><strong>Navigation:</strong> Redirect to role-specific dashboard</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                
+                <h3>FLIGHT BOOKING</h3>
+                <div class="ipo-process">
+                    <table class="ipo-table">
+                        <tr>
+                            <th>Input</th>
+                            <th>Processing</th>
+                            <th>Output</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ul>
+                                    <li><strong>Flight Selection:</strong> String, TComboBox, must select valid flight</li>
+                                    <li><strong>Destination:</strong> String, TComboBox, must select destination</li>
+                                    <li><strong>Departure Date:</strong> Date, TDateTimePicker, must be 3+ days in future</li>
+                                    <li><strong>Passenger Count:</strong> Integer, TSpinEdit, range 1-10</li>
+                                    <li><strong>Cabin Class:</strong> String, TComboBox (Economy/Business/First)</li>
+                                    <li><strong>Special Requirements:</strong> String, TMemo, optional (max 500 chars)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ol>
+                                    <li>Query available flights matching criteria</li>
+                                    <li>Calculate total price based on base price, passengers, cabin class</li>
+                                    <li>Validate booking (seat availability, user credit)</li>
+                                    <li>Create booking record in database</li>
+                                    <li>Generate booking confirmation</li>
+                                    <li>Save booking to file</li>
+                                    <li>Send email confirmation</li>
+                                    <li>Update travel statistics</li>
+                                </ol>
+                                <pre>
+	// Calculate price
+	basePrice := qryFlights.FieldByName('BasePrice').AsCurrency
+	totalPrice := basePrice * passengerCount * classMultiplier
+	
+	// Create booking
+	bookingRef := 'SVM-' + FormatDateTime('ddmmyy', Now) + '-' + sequence
+	tblBookings.Append
+	FieldValues['BookingReference'] := bookingRef
+	FieldValues['FlightID'] := selectedFlightID
+	FieldValues['PassengerCount'] := passengerCount
+	FieldValues['CabinClass'] := cabinClass
+	FieldValues['TotalPrice'] := totalPrice
+	tblBookings.Post
+                                </pre>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li><strong>Booking Confirmation:</strong> TRichEdit with formatted details</li>
+                                    <li><strong>Database Records:</strong> New booking in tblBookings, updated seat count</li>
+                                    <li><strong>Confirmation File:</strong> Text file with booking details</li>
+                                    <li><strong>Email:</strong> HTML email with booking confirmation</li>
+                                    <li><strong>Success Message:</strong> Dialog box confirming booking</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <h3>SPACECRAFT MANAGEMENT</h3>
+                <div class="ipo-process">
+                    <table class="ipo-table">
+                        <tr>
+                            <th>Input</th>
+                            <th>Processing</th>
+                            <th>Output</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ul>
+                                    <li><strong>Spacecraft Name:</strong> String, TEdit, 3-30 chars</li>
+                                    <li><strong>Spacecraft Type:</strong> String, TComboBox (Shuttle/Explorer/Cruiser/Transport)</li>
+                                    <li><strong>Capacity:</strong> Integer, TEdit, range 5-500</li>
+                                    <li><strong>Range:</strong> Real, TEdit, 0.1-10.0 light years</li>
+                                    <li><strong>Manufacture Date:</strong> Date, TDateTimePicker, between 2020 and today</li>
+                                    <li><strong>Status:</strong> String, TComboBox (Active/Maintenance/Retired)</li>
+                                    <li><strong>Description:</strong> String, TMemo, max 1000 chars</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ol>
+                                    <li>Validate all input fields</li>
+                                    <li>Generate unique spacecraft ID based on type and date</li>
+                                    <li>Calculate next maintenance date based on spacecraft type</li>
+                                    <li>Create spacecraft record in database</li>
+                                    <li>Create spacecraft profile file</li>
+                                    <li>Update status and handle flight scheduling conflicts</li>
+                                </ol>
+                                <pre>
+	// Generate spacecraft ID
+	typePrefix := GetTypePrefix(spacecraftType)
+	dateCode := FormatDateTime('yymm', Now)
+	sequenceNum := GetNextSequence(typePrefix + dateCode)
+	spacecraftID := typePrefix + dateCode + sequenceNum
+	
+	// Add to database
+	tblSpaceships.Append
+	FieldValues['SpacecraftID'] := spacecraftID
+	FieldValues['Name'] := spacecraftName
+	FieldValues['Type'] := spacecraftType
+	FieldValues['Capacity'] := capacity
+	FieldValues['Range'] := range
+	FieldValues['Status'] := status
+	tblSpaceships.Post
+                                </pre>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li><strong>Spacecraft List:</strong> TDBGrid with filtered spacecraft</li>
+                                    <li><strong>Spacecraft Details:</strong> TPanel with complete details</li>
+                                    <li><strong>Maintenance Schedule:</strong> TDBGrid showing maintenance</li>
+                                    <li><strong>Profile File:</strong> Text file with spacecraft details</li>
+                                    <li><strong>Status Messages:</strong> Dialog boxes confirming actions</li>
+                                    <li><strong>Exported Reports:</strong> CSV, PDF, TXT files</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <p class="conclusion">This IPO table documents the key processes in the Stellar Voyage Manager space travel application, showing the flow of data from user input through processing to output. Each process includes appropriate validation, error handling, and database operations to ensure data integrity and a smooth user experience.</p>
+            </div>
+
+
+
+                <div class="ipo-process">
+                    <table class="ipo-table" border=1>
+                        <tr>
+                            <th colspan="6">INPUT</th>
+                        </tr>
+                        <tr>
+						    <th>Variable</th>
+                            <th>Input Source</th>
+                            <th>Data Type</th>
+                            <th>Format</th>
+                            <th>GUI Component</th>
+                            <th>Validation Rules</th>
+                        </tr>
+                        <tr>
+                            <td>edtEmail</td>
+                            <td>Keyboard</td>
+                            <td>String</td>
+                            <td>Valid email format (user@domain.com)</td>
+                            <td>TEdit</td>
+                            <td>
+                                <ul>
+                                    <li>Presence check - cannot be empty</li>
+                                    <li>Format check - must contain @ and domain</li>
+                                    <li>Error message: "Please enter a valid email address"</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>edtPassword</td>
+                            <td>Keyboard</td>
+                            <td>String</td>
+                            <td>8+ chars, masked with asterisks</td>
+                            <td>TEdit (Password)</td>
+                            <td>
+                                <ul>
+                                    <li>Presence check - cannot be empty</li>
+                                    <li>Minimum 8 characters</li>
+                                    <li>Error message: "Please enter your password"</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <table class="ipo-table">
+                        <tr>
+                            <th colspan="3">Processing</th>
+                        </tr>
+                        <tr>
+                            <th>Step</th>
+                            <th>Pseudo Code</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td>Step 1: Validate Input</td>
+                            <td>
+                                <pre>
+function ValidateLoginInput: Boolean;
+begin
+  Result := True;
+  
+  // Check email
+  if edtEmail.Text = '' then
+  begin
+	ShowMessage('Please enter your email address');
+	edtEmail.SetFocus;
+	Result := False;
+	Exit;
+  end;
+  
+  // Check email format
+  if Pos('@', edtEmail.Text) = 0 then
+  begin
+	ShowMessage('Please enter a valid email address');
+	edtEmail.SetFocus;
+	Result := False;
+	Exit;
+  end;
+  
+  // Check password
+  if edtPassword.Text = '' then
+  begin
+	ShowMessage('Please enter your password');
+	edtPassword.SetFocus;
+	Result := False;
+	Exit;
+  end;
+end;
+                                </pre>
+                            </td>
+                            <td>Validate Login Input: Checks that the user has entered a valid email address and password before attempting to authenticate.</td>
+                        </tr>
+                        <tr>
+                            <td>Step 2: Authenticate User</td>
+                            <td>
+                                <pre>
+procedure AuthenticateUser;
+begin
+  // Validate input first
+  if not ValidateLoginInput then
+	Exit;
+  
+  // Query database for user
+  with qryLogin do
+  begin
+	SQL.Text := 'SELECT * FROM tblUsers WHERE Email = :Email';
+	Parameters.ParamByName('Email').Value := edtEmail.Text;
+	Open;
+	
+	// Check if user exists
+	if RecordCount = 0 then
+	begin
+	  ShowMessage('Invalid email or password');
+	  LogLoginAttempt(edtEmail.Text, False);
+	  Exit;
+	end;
+	
+	// Check password
+	if FieldByName('Password').AsString <> edtPassword.Text then
+	begin
+	  ShowMessage('Invalid email or password');
+	  LogLoginAttempt(edtEmail.Text, False);
+	  Exit;
+	end;
+	
+	// Login successful
+	CurrentUserID := FieldByName('UserID').AsString;
+	CurrentUserName := FieldByName('FullName').AsString;
+	CurrentUserRole := FieldByName('UserRole').AsString;
+	CurrentHomeBase := FieldByName('HomeBase').AsString;
+	
+	// Log successful login
+	LogLoginAttempt(edtEmail.Text, True);
+	
+	// Navigate to appropriate dashboard
+	NavigateToDashboard(CurrentUserRole);
+  end;
+end;
+                                </pre>
+                            </td>
+                            <td>Authenticate User: Queries the database to verify the user's credentials, logs the login attempt, and navigates to the appropriate dashboard if successful.</td>
+                        </tr>
+                    </table>
+                    
+                    <table class="ipo-table" border=2>
+                        <tr>
+                            <th colspan="2">Output</th>
+                        </tr>
+                        <tr>
+						    <th>Output Message</th>
+                            <th>Output Component</th>
+                            
+                        </tr>
+                        <tr>
+                            <td>Success Navigation</td>
+                            <td>Navigation to role-specific dashboard:
+                                <ul>
+                                    <li>Traveler Dashboard: Flight booking and management</li>
+                                    <li>Administrator Dashboard: System management</li>
+                                    <li>Maintenance Dashboard: Spacecraft maintenance</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Error Messages</td>
+                            <td>Dialog boxes with specific error messages for validation failures</td>
+                        </tr>
+                        <tr>
+                            <td>Login Log</td>
+                            <td>Database record in tblLoginLog with timestamp, user email, success/failure, and IP address</td>
+                        </tr>
+                    </table>
+                </div>
+		</section>		
+                
+                <h3>FLIGHT DEPARTURE SELECTION</h3>
+		<section>
+                <div class="ipo-process">
+                    <table class="ipo-table"border=2>
+                        <tr>
+                            <th colspan="6">INPUT</th>
+                        </tr>
+                        <tr>
+						    <th>Variable</th>
+                            <th>Input Source</th>
+                            <th>Data Type</th>
+                            <th>Format</th>
+                            <th>GUI Component</th>
+                            <th>Validation Rules</th>
+                        </tr>
+                        <tr>
+                            <td>dtpDepartureDate</td>
+                            <td>System</td>
+                            <td>Date</td>
+                            <td>Date (yyyy/mm/dd)</td>
+                            <td>TDateTimePicker</td>
+                            <td>
+                                <ul>
+                                    <li>Range check - must be at least 3 days in the future</li>
+                                    <li>Range check - cannot be more than 1 year in the future</li>
+                                    <li>Error message: "Departure date must be between 3 days and 1 year from today"</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>cmbDestination</td>
+                            <td>System</td>
+                            <td>String</td>
+                            <td>Destination name (e.g., "Mars Colony Alpha")</td>
+                            <td>TComboBox</td>
+                            <td>
+                                <ul>
+                                    <li>Selection check - must select a destination</li>
+                                    <li>Error message: "Please select a destination"</li>
+                                </ul>
+                            </td>
+                        </tr>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>spnPassengerCount</td>
+                            <td>System</td>
+                            <td>Integer</td>
+                            <td>Number (1-20)</td>
+                            <td>TSpinEdit</td>
+                            <td>
+                                <ul>
+                                    <li>Range check - must be between 1 and 20 passengers</li>
+                                    <li>Error message: "Passenger count must be between 1 and 20"</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>cmbCabinClass</td>
+                            <td>System</td>
+                            <td>String</td>
+                            <td>Selection (Economy/Business/First)</td>
+                            <td>TComboBox</td>
+                            <td>
+                                <ul>
+                                    <li>Selection check - must select a cabin class</li>
+                                    <li>Error message: "Please select a cabin class"</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <h3>SPACECRAFT PRICING ADMINISTRATION</h3>
+                <div class="ipo-process">
+                    <table class="ipo-table" border=2>
+                        <tr>
+                            <th colspan="6">INPUT</th>
+                        </tr>
+                        <tr> 
+						    <th>Variable</th>
+                            <th>Input Source</th>
+                            <th>Data Type</th>
+                            <th>Format</th>
+                            <th>GUI Component</th>
+                            <th>Validation Rules</th>
+                        </tr>
+                        <tr>
+                            <td>edtBasePrice</td>
+                            <td>Keyboard</td>
+                            <td>Currency</td>
+                            <td>Decimal (####.##)</td>
+                            <td>TEdit</td>
+                            <td>
+                                <ul>
+                                    <li>Data type check - must be a valid currency value</li>
+                                    <li>Range check - must be between 100.00 and 10000.00</li>
+                                    <li>Error message: "Base price must be between $100 and $10,000"</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>edtEconomyMultiplier</td>
+                            <td>Keyboard</td>
+                            <td>Real</td>
+                            <td>Decimal (0.5-2.0)</td>
+                            <td>TEdit</td>
+                            <td>
+                                <ul>
+                                    <li>Data type check - must be a valid real number</li>
+                                    <li>Range check - must be between 0.5 and 2.0</li>
+                                    <li>Error message: "Economy multiplier must be between 0.5 and 2.0"</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>edtBusinessMultiplier</td>
+                            <td>Keyboard</td>
+                            <td>Real</td>
+                            <td>Decimal (1.5-3.0)</td>
+                            <td>TEdit</td>
+                            <td>
+                                <ul>
+                                    <li>Data type check - must be a valid real number</li>
+                                    <li>Range check - must be between 1.5 and 3.0</li>
+                                    <li>Error message: "Business multiplier must be between 1.5 and 3.0"</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+        </section>       
+                <h3>CODE IMPLEMENTATION EXAMPLES</h3>
+		<section>
+                <div class="ipo-process">
+                    <table class="ipo-table">
+                        <tr>
+                            <th>Create New Flight Booking</th>
+                            <th>Export Revenue Report to File</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <pre>
+with dmStellarVoyage do
+begin
+  tblBookings.Append;
+  tblBookings['FlightID'] := selectedFlightID;
+  tblBookings['UserID'] := currentUserID;
+  tblBookings['BookingReference'] := GenerateBookingReference;
+  tblBookings['DepartureDate'] := dtpDepartureDate.Date;
+  tblBookings['PassengerCount'] := spnPassengerCount.Value;
+  tblBookings['CabinClass'] := cmbCabinClass.Text;
+  tblBookings['TotalPrice'] := calculatedTotalPrice;
+  tblBookings['BookingDate'] := Date;
+  tblBookings['Status'] := 'Confirmed';
+  tblBookings.Post;
+end;
+                                </pre>
+                            </td>
+                            <td>
+                                <pre>
+AssignFile(tfRevenueReport, 'Reports\RevenueReport_' + 
+FormatDateTime('yyyymmdd', Date) + '.txt');
+Rewrite(tfRevenueReport);
+WriteLn(tfRevenueReport, 'STELLAR VOYAGE REVENUE REPORT');
+WriteLn(tfRevenueReport, '==============================');
+WriteLn(tfRevenueReport, 'Date: ' + DateToStr(Date));
+WriteLn(tfRevenueReport, 'Monthly Revenue: ' + 
+FloatToStrF(totalMonthlyRevenue, ffCurrency, 10, 2));
+WriteLn(tfRevenueReport, 'Flight Count: ' + IntToStr(flightCount));
+WriteLn(tfRevenueReport, 'Passenger Count: ' + IntToStr(passengerCount));
+CloseFile(tfRevenueReport);
+
+
+								
+                                </pre>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="ipo-table">
+                        <tr>
+                            <th>Authenticate Space Traveler</th>
+                            <th>Update Flight Base Price</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <pre>
+procedure AuthenticateUser(email, password: String): Boolean;
+begin
+  Result := False;
+  
+  with qryUsers do
+  begin
+	SQL.Text := 'SELECT * FROM tblUsers WHERE Email = :Email';
+	Parameters.ParamByName('Email').Value := email;
+	Open;
+	
+	if RecordCount > 0 then
+	begin
+	  if FieldByName('Password').AsString = password then
+	  begin
+		currentUserID := FieldByName('UserID').AsString;
+		currentUserRole := FieldByName('UserRole').AsString;
+		Result := True;
+	  end;
+	end;
+  end;
+end;
+								
+								
+								
+								
+                                </pre>
+                            </td>
+                            <td>
+                                <pre>
+procedure UpdateFlightPrice(flightID: Integer; newPrice: Currency);
+begin
+  // Validate price range
+  if (newPrice < 100) or (newPrice > 10000) then
+  begin
+	ShowMessage('Price must be between $100 and $10,000');
+	Exit;
+  end;
+  
+  // Update flight price in database
+  with qryFlights do
+  begin
+	SQL.Text := 'UPDATE tblFlights SET BasePrice = :Price ' +
+			   'WHERE FlightID = :FID';
+	Parameters.ParamByName('Price').Value := newPrice;
+	Parameters.ParamByName('FID').Value := flightID;
+	ExecSQL;
+	
+	// Refresh flight list
+	SQL.Text := 'SELECT * FROM tblFlights';
+	Open;
+  end;
+  
+  ShowMessage('Flight price updated successfully');
+end;
+                                </pre>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+        </section>       
+                <h3>DATA OUTPUT EXAMPLES</h3>
+                <div class="ipo-process">
+                    <h4>Output Interface 1 (Available Flights Screen):</h4>
+                    <ol>
+                        <li><strong>Data to Output:</strong> List of available spacecraft flights with details (Flight ID, Spacecraft Name, Destination, Departure Date, Available Seats, Base Price).</li>
+                        <li><strong>Format of the Output:</strong> Each flight's details displayed in a tabular format with appropriate column widths for clear presentation.</li>
+                        <li><strong>Output Component:</strong> TDBGrid for displaying the list of available flights filtered by destination and date.</li>
+                    </ol>
+                    <div class="ipo-image">
+                        <img src="GUI design/Available Flights.png" alt="Available Flights Screen" class="a4-optimized-image">
+                    </div>
+                    
+                    <h4>Output Interface 2 (Booking Confirmation Screen):</h4>
+                    <ol>
+                        <li><strong>Data to Output:</strong> Space flight booking confirmation details (Booking Reference, Flight Information, Passenger Count, Cabin Class, Total Price).</li>
+                        <li><strong>Format of the Output:</strong> A formatted confirmation message with complete booking details.</li>
+                        <li><strong>Output Component:</strong> TRichEdit displaying the confirmation with appropriate formatting.</li>
+                    </ol>
+                    <div class="booking-summary">
+                        <pre>
+                        STELLAR VOYAGE BOOKING CONFIRMATION
+                        ===================================
+                        
+                        Booking Reference: SVM-250515-3842
+                        Booking Date: 2025/05/15 14:22
+                        Status: Confirmed
+                        
+                        Passenger: Alex Johnson
+                        Destination: Mars Colony Alpha
+                        Spacecraft: Stellar Explorer II
+                        Departure Date: 2025/06/20
+                        Passengers: 2
+                        Cabin Class: Business
+                        
+                        Total Price: $12,450.00
+                        
+                        Thank you for choosing Stellar Voyage Manager for your journey to the stars!
+                        </pre>
+                    </div>
+                    <div class="ipo-image">
+                        <img src="GUI design/Bookings Management.png" alt="Booking Confirmation Screen" class="a4-optimized-image">
+                    </div>
+                </div>
+                
+                <h3>Maintenance Logging Process</h3>
+                <div class="ipo-process">
+                    <table class="ipo-table">
+                        <tr>
+                            <th>Input</th>
+                            <th>Processing</th>
+                            <th>Output</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ul>
+                                    <li>Selected spacecraft (from spacecraft grid)</li>
+                                    <li>Maintenance type (Routine, Emergency, Upgrade)</li>
+                                    <li>Maintenance description</li>
+                                    <li>Maintenance date</li>
+                                </ul>
+                                <h5>Validation:</h5>
+                                <ul>
+                                    <li>Verify spacecraft exists</li>
+                                    <li>Verify user is authenticated and has maintenance role</li>
+                                    <li>Verify description is not empty</li>
+                                    <li>Verify date is valid (not in future)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Generate unique maintenance ID</li>
+                                    <li>Create maintenance record with spacecraft ID, maintenance date, description, type, and user ID</li>
+                                    <li>Update spacecraft's last maintenance date</li>
+                                    <li>Update spacecraft status if necessary (e.g., set to Maintenance)</li>
+                                    <li>Update database with new maintenance record and updated spacecraft information</li>
+                                    <li>Update in-memory arrays with new data</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Display confirmation message with maintenance details</li>
+                                    <li>Update spacecraft grid to reflect new status and maintenance date</li>
+                                    <li>Update maintenance logs grid to include new maintenance record</li>
+                                    <li>If error occurs, display appropriate error message</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="ipo-image">
+                        <img src="GUI design/Maintenance logs.png" alt="Maintenance Logging Process Screenshot" class="a4-optimized-image">
+                    </div>
+                </div>
+                
+                <h3>Report Generation Process</h3>
+                <div class="ipo-process">
+                    <table class="ipo-table">
+                        <tr>
+                            <th>Input</th>
+                            <th>Processing</th>
+                            <th>Output</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ul>
+                                    <li>Report type selection (Bookings, Flights, Maintenance)</li>
+                                    <li>Date range (start date, end date)</li>
+                                    <li>Additional filters (e.g., specific spacecraft, destination)</li>
+                                </ul>
+                                <h5>Validation:</h5>
+                                <ul>
+                                    <li>Verify user is authenticated and has administrator role</li>
+                                    <li>Verify date range is valid (start date before end date)</li>
+                                    <li>Verify filters are valid</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Query database for records matching report criteria</li>
+                                    <li>Filter data based on date range and additional filters</li>
+                                    <li>Aggregate data as needed (e.g., count bookings by destination)</li>
+                                    <li>Calculate statistics (e.g., average occupancy, revenue)</li>
+                                    <li>Format data for display</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Display report data in grid or chart format</li>
+                                    <li>Provide options for exporting report (e.g., CSV, PDF)</li>
+                                    <li>Display summary statistics</li>
+                                    <li>If no data matches criteria, display appropriate message</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="ipo-image">
+                        <img src="GUI design/Reports.png" alt="Report Generation Process Screenshot" class="a4-optimized-image">
+                    </div>
+                </div>
+                
+                <h3>Flight Management Process</h3>
+                <div class="ipo-process">
+                    <table class="ipo-table">
+                        <tr>
+                            <th>Input</th>
+                            <th>Processing</th>
+                            <th>Output</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ul>
+                                    <li>Flight details (destination, departure time, spacecraft)</li>
+                                    <li>Number of available seats</li>
+                                    <li>Flight status</li>
+                                </ul>
+                                <h5>Validation:</h5>
+                                <ul>
+                                    <li>Verify user is authenticated and has administrator role</li>
+                                    <li>Verify destination exists</li>
+                                    <li>Verify spacecraft exists and is operational</li>
+                                    <li>Verify departure time is in the future</li>
+                                    <li>Verify seats available is positive and doesn't exceed spacecraft capacity</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Generate unique flight ID</li>
+                                    <li>Create flight record with provided details</li>
+                                    <li>Check for scheduling conflicts with the selected spacecraft</li>
+                                    <li>Update database with new flight information</li>
+                                    <li>Update in-memory arrays with new data</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Display confirmation message with flight details</li>
+                                    <li>Update flights grid to include new flight</li>
+                                    <li>Make flight available for booking</li>
+                                    <li>If error occurs, display appropriate error message</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="ipo-image">
+                        <img src="GUI design/Flights management.png" alt="Flight Management Process Screenshot" class="a4-optimized-image">
+                    </div>
+                </div>
+                
+                <h3>Booking Management Process</h3>
+                <div class="ipo-process">
+                    <table class="ipo-table">
+                        <tr>
+                            <th>Input</th>
+                            <th>Processing</th>
+                            <th>Output</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ul>
+                                    <li>Selected booking (from bookings grid)</li>
+                                    <li>Action selection (approve, reject, cancel)</li>
+                                </ul>
+                                <h5>Validation:</h5>
+                                <ul>
+                                    <li>Verify user is authenticated and has administrator role</li>
+                                    <li>Verify booking exists</li>
+                                    <li>Verify action is valid for current booking status</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Update booking status based on selected action</li>
+                                    <li>If canceling, increase available seats for the flight</li>
+                                    <li>If approving, verify seats are still available</li>
+                                    <li>Update database with new booking status</li>
+                                    <li>Update in-memory arrays with new data</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Display confirmation message with updated booking details</li>
+                                    <li>Update bookings grid to reflect new status</li>
+                                    <li>If error occurs, display appropriate error message</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="ipo-image">
+                        <img src="GUI design/Bookings management.png" alt="Booking Management Process Screenshot" class="a4-optimized-image">
+                    </div>
+                </div>
+                
+                <h3>Destination Information Process</h3>
+                <div class="ipo-process">
+                    <table class="ipo-table">
+                        <tr>
+                            <th>Input</th>
+                            <th>Processing</th>
+                            <th>Output</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ul>
+                                    <li>Selected destination (from destinations grid)</li>
+                                </ul>
+                                <h5>Validation:</h5>
+                                <ul>
+                                    <li>Verify destination exists in database</li>
+                                    <li>Verify destination text file exists</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Retrieve destination record from database</li>
+                                    <li>Load detailed information from text file</li>
+                                    <li>Parse text file content into sections (description, points of interest, climate, travel advisory)</li>
+                                    <li>Format content for display</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Display destination name, distance, and travel time</li>
+                                    <li>Display detailed description from text file</li>
+                                    <li>Display points of interest</li>
+                                    <li>Display climate information</li>
+                                    <li>Display travel advisories</li>
+                                    <li>If error occurs, display appropriate error message</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="ipo-image">
+                        <img src="GUI design/Destinations.png" alt="Destination Information Process Screenshot" class="a4-optimized-image">
+                    </div>
+                </div>
+                
+                <h3>Spacecraft Status Update Process</h3>
+                <div class="ipo-process">
+                    <table class="ipo-table">
+                        <tr>
+                            <th>Input</th>
+                            <th>Processing</th>
+                            <th>Output</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ul>
+                                    <li>Selected spacecraft (from spacecraft grid)</li>
+                                    <li>New status selection (Operational, Maintenance, Retired)</li>
+                                </ul>
+                                <h5>Validation:</h5>
+                                <ul>
+                                    <li>Verify user is authenticated and has maintenance role</li>
+                                    <li>Verify spacecraft exists</li>
+                                    <li>Verify new status is different from current status</li>
+                                    <li>If setting to Maintenance, verify no upcoming flights are scheduled</li>
+                                    <li>If setting to Retired, verify no upcoming flights are scheduled</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Update spacecraft status in database</li><li>If setting to Maintenance, cancel or reschedule any affected flights</li>
+                                    <li>If setting to Operational, verify maintenance has been completed</li>
+                                    <li>Update in-memory arrays with new data</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Display confirmation message with updated status</li>
+                                    <li>Update spacecraft grid to reflect new status</li>
+                                    <li>If flights were affected, display notification</li>
+                                    <li>If error occurs, display appropriate error message</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="ipo-image">
+                        <img src="GUI design/Spacecraft Status.png" alt="Spacecraft Status Update Process Screenshot" class="a4-optimized-image">
+                    </div>
+                </div>
+        </section>
+
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Stellar Voyage Manager - Captain Finest Pieces</p>
+        </div>
+    </footer>
+</body>
+</html>
